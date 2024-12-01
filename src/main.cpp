@@ -137,9 +137,9 @@ private:
         createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
         createInfo.pApplicationInfo = &appInfo;
 
-        auto extensiona = getRequiredExtensions();
-        createInfo.enabledLayerCount = static_cast<uint32_t>(validationLayers.size());
-        createInfo.ppEnabledLayerNames = validationLayers.data();
+        auto extensions = getRequiredExtensions();
+        createInfo.enabledExtensionCount = static_cast<uint32_t>(extensions.size());
+        createInfo.ppEnabledExtensionNames = extensions.data();
 
         VkDebugUtilsMessengerCreateInfoEXT debugCreateInfo{};
         if (enableValidationLayers)
@@ -170,7 +170,7 @@ private:
         if (result != VK_SUCCESS)
         {
             std::cerr << "Failed to enumerate instance layer properties!" << std::endl;
-            return -1;
+            return false;
         }
 
         std::vector<VkLayerProperties> availableLayers(layerCount);
