@@ -7,6 +7,7 @@
 #include <cstdlib>
 #include <vector>
 #include <string.h>
+#include <optional>
 
 // print
 template <typename T>
@@ -58,6 +59,11 @@ void DestroyDebugUtilsMessengerEXT(
         func(instance, debugMessenger, pAllocator);
     }
 }
+
+struct QueueFamilyIndices
+{
+    std::optional<uint32_t> graphicsFamily;
+};
 
 class HelloTriangleApplication
 {
@@ -125,6 +131,13 @@ private:
     bool isDeviseSuitable(VkPhysicalDevice devise)
     {
         return true;
+    }
+
+    QueueFamilyIndices findQueueFamilies(VkPhysicalDevice devise)
+    {
+        QueueFamilyIndices indices;
+        // Logic to find queue family indices to populate struct with
+        return indices;
     }
 
     void mainLoop()
