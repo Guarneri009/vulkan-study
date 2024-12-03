@@ -7,6 +7,7 @@
 #include <cstdlib>
 #include <vector>
 #include <string.h>
+#include <optional>
 
 // print
 template <typename T>
@@ -58,6 +59,15 @@ void DestroyDebugUtilsMessengerEXT(
         func(instance, debugMessenger, pAllocator);
     }
 }
+
+struct QueueFamilyIndices
+{
+    std::optional<uint32_t> graphicsFamily;
+    bool isComplete()
+    {
+        return graphicsFamily.has_value();
+    }
+};
 
 class HelloTriangleApplication
 {
@@ -124,7 +134,36 @@ private:
 
     bool isDeviseSuitable(VkPhysicalDevice devise)
     {
-        return true;
+        QueueFamilyIndices indices = findQueueFamilies(devise);
+        return indices.graphicsFamily.has_value();
+    }
+
+    QueueFamilyIndices findQueueFamilies(VkPhysicalDevice devise)
+    {
+        QueueFamilyIndices indices;
+        // Logic to find queue family indices to populate struct with
+        uint32_t queueFamilyCount = 0;
+        vkGetPhysicalDeviceQueueFamilyProperties(devise, &queueFamilyCount, nullptr);
+
+        std::vector<VkQueueFamilyProperties> queueFamilies(queueFamilyCount);
+        vkGetPhysicalDeviceQueueFamilyProperties(devise, &queueFamilyCount, queueFamilies.data());
+
+        int i = 0;
+        for (const auto &queueFamily : queueFamilies)
+        {
+            if (queueFamily.queueFlags & VK_QUEUE_GRAPHICS_BIT)
+            {
+                indices.graphicsFamily = i;
+            }
+
+            if (indices.isComplete())
+            {
+                break;
+            }
+            i++;
+        }
+
+        return indices;
     }
 
     void mainLoop()
