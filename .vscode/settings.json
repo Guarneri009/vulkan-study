@@ -1,0 +1,48 @@
+{
+    // "editor.tokenColorCustomizations": {
+    //     "textMateRules": [
+    //         {
+    //             "scope": "variable.other", // 通常の変数
+    //             "settings": {
+    //                 "foreground": "#ff007f" // ピンク色
+    //             }
+    //         },
+    //         {
+    //             "scope": "entity.name.function", // 関数名
+    //             "settings": {
+    //                 "foreground": "#00ffff" // シアン色
+    //             }
+    //         },
+    //         {
+    //             "scope": "keyword.control", // if, for, return などのキーワード
+    //             "settings": {
+    //                 "foreground": "#ff4500" // オレンジ色
+    //             }
+    //         },
+    //         {
+    //             "scope": "storage.type", // 型 (uint32_t など)
+    //             "settings": {
+    //                 "foreground": "#ff007f" // ピンク色
+    //             }
+    //         },
+    //         {
+    //             "scope": "constant.language", // nullptr など
+    //             "settings": {
+    //                 "foreground": "#800080" // 紫色
+    //             }
+    //         },
+    //         {
+    //             "scope": "punctuation.separator", // コンマやドット
+    //             "settings": {
+    //                 "foreground": "#ffffff" // 白色
+    //             }
+    //         },
+    //         {
+    //             "scope": "punctuation.terminator", // セミコロン
+    //             "settings": {
+    //                 "foreground": "#ffffff" // 白色
+    //             }
+    //         }
+    //     ]
+    // }
+}
